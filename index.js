@@ -23,7 +23,12 @@ app.use(express.json());//requestams ir responsams
 
 app.get('/products', async (req,res) => {
     //neapibrezta klaida
+   try {
     res.status(200).json({message: 'Sėkmingai pasiekiamas produktų puslapis'})
+    }
+    catch (err) {
+        res.status(400).json({error: 'error'});
+    }
 });
 
 
