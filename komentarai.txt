@@ -28,3 +28,27 @@ Stack - technologijos,kurias naudojam
     1.2 Serveris (Node.js + express.js) 
     1.3 Bazinės Javascript žinios
 //Node.js + express.js + Postgresql + /////// React.js(dizainui)
+
+
+Step by Step komandos terminalui:
+
+1. Sukuriam tuscia folderi PC, atidarom VS kode
+2. Sukuriam repository Gite
+3 Atidarom terminala paleidziam: node-v
+4. npm -v
+5. nmp init
+6. npm install
+7. (npm install express pg dote
+nv) 
+arba atskyrai kiekviena komanda:
+
+npm i express
+ 
+npm i pg
+ 
+npm i dotenv
+
+8. nepamirsti sukurti gitignore: new fili .gitignore, jame irasyti node_modules
+9. uzpildom index.js faila su porto info ir paleidziam serveri: node index.js
+10. Irasyti i package.json fila : "start": "node --watch index.js" (kad veiktu npm start, automatiskai atnaujins kiekviena karta pasave'inus )
+ 
