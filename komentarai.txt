@@ -30,25 +30,24 @@ Stack - technologijos,kurias naudojam
 //Node.js + express.js + Postgresql + /////// React.js(dizainui)
 
 
-Step by Step komandos terminalui:
+Step by Step komandos terminalui kuriant API:
 
 1. Sukuriam tuscia folderi PC, atidarom VS kode
 2. Sukuriam repository Gite
-3 Atidarom terminala paleidziam: node-v
+3 Atidarom terminala paleidziam: node -v
 4. npm -v
 5. nmp init
 6. npm install
-7. (npm install express pg dote
-nv) 
+7. (npm install express pg dote nv) 
 arba atskyrai kiekviena komanda:
 
-npm i express
+npm i express (expreso serveris)
  
-npm i pg
+npm i pg  (ntegracija su PSql duombaze)
  
-npm i dotenv
+npm i dote nv (prisijungimo duomenų prisidėjimui duonbazei)
 
-8. nepamirsti sukurti gitignore: new fili .gitignore, jame irasyti node_modules
+8. nepamirsti sukurti gitignore: new file .gitignore, jame irasyti node_modules
 9. uzpildom index.js faila su porto info ir paleidziam serveri: node index.js
 10. Irasyti i package.json fila : "start": "node --watch index.js" (kad veiktu npm start, automatiskai atnaujins kiekviena karta pasave'inus )
  

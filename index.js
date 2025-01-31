@@ -22,7 +22,7 @@ app.use(express.json());//requestams ir responsams
 //{message: 'Sėkmingai pasiekiamas produktų puslapis'} status kodas 200
 
 app.get('/products', async (req,res) => {
-    //neapibrezta klaida
+     //neapibrezta klaida 400 koda, jeigu nepavyksta prisijungti prie duombazes 500
    try {
     res.status(200).json({message: 'Sėkmingai pasiekiamas produktų puslapis'})
     }
