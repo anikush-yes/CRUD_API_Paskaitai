@@ -95,17 +95,17 @@ app.put('/users/update/:id', async (req, res) => {
 
 //DELETE USER
 
-app.delete('/users/:id', async (req, res) => {
-  
+app.delete('/users/delete/:id', async (req, res) => {
     try {
-        const id = req.params.id;
-        const results = await pool.query(`DELETE * from users where id=$1`,[id]);
-        res.status(200).json(results.rows);
+        const { id } = req.params;
+        const result = await pool.query('DELETE FROM users WHERE id = $1 RETURNING *', [id]);
+        res.status(200).json(result.rows);
     }
-    catch (err) {
+    catch (error) {
         res.status(400).json({ error: 'error' });
     }
 });
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
