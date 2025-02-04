@@ -38,14 +38,14 @@ Step by Step komandos terminalui kuriant API:
 4. npm -v
 5. nmp init
 6. npm install
-7. (npm install express pg dote nv) 
+7. (npm install express pg dotenv) 
 arba atskyrai kiekviena komanda:
 
 npm i express (expreso serveris)
  
 npm i pg  (ntegracija su PSql duombaze)
  
-npm i dote nv (prisijungimo duomenų prisidėjimui duonbazei)
+npm i dotenv (prisijungimo duomenų prisidėjimui duonbazei)
 
 8. nepamirsti sukurti gitignore: new file .gitignore, jame irasyti node_modules
 9. uzpildom index.js faila su porto info ir paleidziam serveri: node index.js
