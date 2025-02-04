@@ -49,5 +49,5 @@ npm i dotenv (prisijungimo duomenų prisidėjimui duonbazei)
 
 8. nepamirsti sukurti gitignore: new file .gitignore, jame irasyti node_modules
 9. uzpildom index.js faila su porto info ir paleidziam serveri: node index.js
-10. Irasyti i package.json fila : "start": "node --watch index.js" (kad veiktu npm start, automatiskai atnaujins kiekviena karta pasave'inus )
+10. Irasyti i package.json fila : "start": "node --watch index.js" (kad veiktu npm start, automatiskai atnaujins kiekviena karta pasave'inus, serveri kviest npm start)
  
