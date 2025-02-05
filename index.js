@@ -120,9 +120,12 @@ app.delete('/users/delete/:id', async (req, res) => {
     }
 });
 
+//---------------------------------------------------------------------------------------------------------------------------------------
 
 //PRODUCTS CRUD:
 
+
+//Get all products
 
 app.get('/products', async (req, res) => {
     
@@ -135,6 +138,8 @@ app.get('/products', async (req, res) => {
     }
 });
 
+
+//Get specific product
 
 app.get('/products/:id', async (req, res) => {
   
@@ -149,21 +154,62 @@ app.get('/products/:id', async (req, res) => {
 });
 
 
+//Create new product
+
 app.post('/products', async (req, res) => {
     try {
-        // insert into users (id,username,"password")  values (1000, 'idetasPerInsert','idetasPerInser')
        
         const {id, title, description, price} = req.body;
  
-        const results = await pool.query(`insert into products (id, title, description, price)  values (${id}, '${title}','${description}','${price}) returning *`);    
-        // const results = await pool.query(`select * from users where id=${id}`);    
+        const results = await pool.query(`insert into products (id, title, description, price)  values (${id}, '${title}','${description}','${price}') returning *`);    
+        //   
         res.status(201).json(results.rows[0]);
-        // res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis'});
+        
     }
     catch (err) {
         res.status(400).json({error: 'error'});
     }
    
+});
+
+
+// Edit product 
+
+app.put('/products/update/:id', async (req, res) => {
+    try {
+        const { title, description, price } = req.body;  
+        const { id } = req.params;  
+
+        const result = await pool.query(
+            'UPDATE products SET title = $1, description = $2, price = $3 WHERE id = $4 RETURNING *',
+            [title, description, price, id]  
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'Product not found' });  
+        }
+
+        res.status(200).json(result.rows[0]);  
+    }
+    catch (error) {
+        console.error(error);  
+        res.status(400).json({ error: error.message });  
+    }
+});
+
+
+
+//Delete product
+
+app.delete('/PRODUCTS/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query('DELETE FROM products WHERE id = $1 RETURNING *', [id]);
+        res.status(200).json(result.rows);
+    }
+    catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
 });
 
 
@@ -173,3 +219,4 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`) //paleidziamas serveris
 });
+
