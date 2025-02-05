@@ -51,3 +51,8 @@ npm i dotenv (prisijungimo duomenų prisidėjimui duonbazei)
 9. uzpildom index.js faila su porto info ir paleidziam serveri: node index.js
 10. Irasyti i package.json fila : "start": "node --watch index.js" (kad veiktu npm start, automatiskai atnaujins kiekviena karta pasave'inus, serveri kviest npm start)
  
+
+
+End ro End testavimas galutinio vartotojo testavimas, kaip produkta matys vartotojas
+
+Po duombazes sukurimo 

@@ -92,6 +92,20 @@ app.put('/users/update/:id', async (req, res) => {
     }
 });
 
+//Destytojo kodas:
+// app.put('/users/:id', async(req, res)=> {
+//     try{
+//         const id = req.params.id;
+//         const {username, password} = req.body;
+//         const results = await pool.query(`update users set username = '${username}', "password" = '${password}' where id = ${id} returning*`);
+//         res.status(201).json(results.rows[0]);
+//     }
+//     catch(err){
+//         res.status(400).json({error: 'error'});
+//     }
+   
+// });
+
 
 //DELETE USER
 
