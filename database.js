@@ -1,4 +1,4 @@
-//atsakingas už prisikungimą prie duomabazės
+//atsakingas už prisijungimą prie duomabazės
 
 //
 

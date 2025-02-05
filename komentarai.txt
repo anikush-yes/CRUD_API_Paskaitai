@@ -55,4 +55,10 @@ npm i dotenv (prisijungimo duomenų prisidėjimui duonbazei)
 
 End ro End testavimas galutinio vartotojo testavimas, kaip produkta matys vartotojas
 
-Po duombazes sukurimo 
+Po duombazes sukurimo Postgresql: 
+kiekvienam projektui atskyrai turome paleisti terminale Cypress iranki automatiniam testavimui
+
+npm i cypress 
+npx cypress open
+
+Sukonfigyruoti Cypress

@@ -22,15 +22,15 @@ app.use(express.json());//requestams ir responsams
 //localhost:3000/products
 //{message: 'Sėkmingai pasiekiamas produktų puslapis'} status kodas 200
 
-app.get('/products', async (req, res) => {
-    //neapibrezta klaida 400 koda, jeigu nepavyksta prisijungti prie duombazes 500
-    try {
-        res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis' })
-    }
-    catch (err) {
-        res.status(400).json({ error: 'error' });
-    }
-});
+// app.get('/products', async (req, res) => {
+//     //neapibrezta klaida 400 koda, jeigu nepavyksta prisijungti prie duombazes 500
+//     try {
+//         res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis' })
+//     }
+//     catch (err) {
+//         res.status(400).json({ error: 'error' });
+//     }
+// });
 
 app.get('/users', async (req, res) => {
     //neapibrezta klaida 400 koda, jeigu nepavyksta prisijungti prie duombazes 500
@@ -119,6 +119,54 @@ app.delete('/users/delete/:id', async (req, res) => {
         res.status(400).json({ error: 'error' });
     }
 });
+
+
+//PRODUCTS CRUD:
+
+
+app.get('/products', async (req, res) => {
+    
+    try {
+        const results = await pool.query("SELECT * FROM products");
+        res.status(200).json(results.rows);
+    }
+    catch (err) {
+        res.status(400).json({ error: 'error' });
+    }
+});
+
+
+app.get('/products/:id', async (req, res) => {
+  
+    try {
+        const id = req.params.id;
+        const results = await pool.query(`select * from products where id=$1`,[id]);
+        res.status(200).json(results.rows);
+    }
+    catch (err) {
+        res.status(400).json({ error: 'error' });
+    }
+});
+
+
+app.post('/products', async (req, res) => {
+    try {
+        // insert into users (id,username,"password")  values (1000, 'idetasPerInsert','idetasPerInser')
+       
+        const {id, title, description, price} = req.body;
+ 
+        const results = await pool.query(`insert into products (id, title, description, price)  values (${id}, '${title}','${description}','${price}) returning *`);    
+        // const results = await pool.query(`select * from users where id=${id}`);    
+        res.status(201).json(results.rows[0]);
+        // res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis'});
+    }
+    catch (err) {
+        res.status(400).json({error: 'error'});
+    }
+   
+});
+
+
 
 
 const PORT = 3000;
