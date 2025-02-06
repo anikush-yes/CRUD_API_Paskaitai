@@ -60,23 +60,17 @@ app.get('/users/:id', async (req, res) => {
 //naujo vartotojo kurymas POST
 
 //  POST         /users - route sukurs users
-app.post('/users', async (req, res) => {
-    try {
-       
-       
-        const { username, password } = req.body;
- 
-        const results = await pool.query(`insert into users (username,"password")  values ('${username}','${password}') returning *`);    
-        // const results = await pool.query(`select * from users where id=${id}`);    
-        res.status(201).json(results.rows[0]);
-        // res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis'});
-    }
-    catch (err) {
-        res.status(400).json({error: 'error'});
-    }
-   
-});
 
+app.post('/users/create', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const result = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *', [username, password]);
+        res.status(201).json(result.rows);
+    }
+    catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+});
 
 //PUT/PATCH 
 
