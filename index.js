@@ -62,11 +62,11 @@ app.get('/users/:id', async (req, res) => {
 //  POST         /users - route sukurs users
 app.post('/users', async (req, res) => {
     try {
-        // insert into users (id,username,"password")  values (1000, 'idetasPerInsert','idetasPerInser')
        
-        const {id, username, password} = req.body;
+       
+        const { username, password } = req.body;
  
-        const results = await pool.query(`insert into users (id,username,"password")  values (${id}, '${username}','${password}') returning *`);    
+        const results = await pool.query(`insert into users (username,"password")  values ('${username}','${password}') returning *`);    
         // const results = await pool.query(`select * from users where id=${id}`);    
         res.status(201).json(results.rows[0]);
         // res.status(200).json({ message: 'Sėkmingai pasiekiamas produktų puslapis'});
@@ -159,9 +159,9 @@ app.get('/products/:id', async (req, res) => {
 app.post('/products', async (req, res) => {
     try {
        
-        const {id, title, description, price} = req.body;
+        const {title, description, price} = req.body;
  
-        const results = await pool.query(`insert into products (id, title, description, price)  values (${id}, '${title}','${description}','${price}') returning *`);    
+        const results = await pool.query(`insert into products (title, description, price)  values ('${title}','${description}','${price}') returning *`);    
         //   
         res.status(201).json(results.rows[0]);
         

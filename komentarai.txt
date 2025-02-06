@@ -62,3 +62,7 @@ npm i cypress
 npx cypress open
 
 Sukonfigyruoti Cypress
+
+
+/// jei atidaryti Ctpress naijai ivesti i terminala    npx cypress open
+ 
