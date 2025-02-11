@@ -68,7 +68,7 @@ describe('CRUD_API', () => {
             cy.request("GET", "http://localhost:3000/products/3").then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.body).to.have.property('id', 3);
-                expect(response.body).to.have.property('title', 'Tank Top');
+                expect(response.body).to.have.property('title', 'Atnaujinta prekė');
                 cy.log(response.body.id);
                 cy.log(response.body.title);
                 cy.log(response.body);
@@ -88,7 +88,8 @@ describe('CRUD_API', () => {
                 description: "Naujas aprašymas",
                 price: 3.99,
             }).then((response) => {
-                expect(response.status).to.eq(201);
+                expect(response.status).to.be.eq(201);
+                expect(response.body).to.have.property('id');
                 expect(response.body).to.have.property('title', 'Nauja prekė');
                 expect(response.body).to.have.property('description', 'Naujas aprašymas');
                 expect(response.body).to.have.property('price', 3.99);
@@ -117,6 +118,8 @@ describe('CRUD_API', () => {
 
         it('/products delete bendras testas', () => {
             cy.request("DELETE", "http://localhost:3000/products/delete/20").then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body).to.have.property('message','Produktas sėkmingai ištrintas');
                 cy.log(' Produktas ištrintas');
             });
         });
